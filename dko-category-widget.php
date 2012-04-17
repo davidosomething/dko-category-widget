@@ -63,6 +63,22 @@ class DKO_Category_Widget extends WP_Widget
       }
     }
 
+    if (!function_exists('get_single_tag')) {
+      function get_single_tag($post_id = '') {
+        global $post;
+        if (!$post_id) {
+          $post_id = $post->ID;
+        }
+        $tags = get_the_tags($post_id);
+        if (!is_array($tags)) {
+          return '';
+        }
+
+        $tag = array_shift($tags);
+        return $tag;
+      }
+    }
+
     require 'model.php';
     if ($dko_category_widget_query->have_posts()) {
       echo $args['before_widget'];

@@ -7,13 +7,13 @@ defined('ABSPATH') or die('Cannot access pages directly.');
 ?>
 <h2><a href="<?php echo $category_link; ?>"><?php echo $widget_title; ?> <span class="ir icon-subcategory"></span></a></h2>
 <section>
-  <?php $dko_category_widget_query->the_post(); $has_tags = get_the_tags(); ?>
+  <?php $dko_category_widget_query->the_post(); ?>
   <article class="latest">
     <div class="inner">
       <a href="<?php the_permalink(); ?>" class="thumbnail"><?php the_post_thumbnail(array(235, 160)); ?></a>
       <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-      <?php if ($has_tags): ?>
-        <em class="meta">filed under <?php $single_tag; ?></a></em>
+      <?php $single_tag = get_single_tag(); if ($single_tag): ?>
+        <em class="meta">filed under <a href="<?php echo get_tag_link($single_tag->term_id); ?>"><?php echo $single_tag->name; ?></a></em>
       <?php endif; ?>
       <div class="excerpt">
         <?php the_excerpt(); ?>
