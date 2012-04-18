@@ -13,7 +13,7 @@ defined('ABSPATH') or die('Cannot access pages directly.');
       <a href="<?php the_permalink(); ?>" class="thumbnail"><?php the_post_thumbnail(array(235, 160)); ?></a>
       <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
       <?php $single_tag = get_single_tag(); if ($single_tag): ?>
-        <em class="meta">filed under <a href="<?php echo get_tag_link($single_tag->term_id); ?>"><?php echo $single_tag->name; ?></a></em>
+        <em class="meta">filed under <a><?php echo $single_tag->name; ?></a></em>
       <?php endif; ?>
       <div class="excerpt">
         <?php the_excerpt(); ?>
