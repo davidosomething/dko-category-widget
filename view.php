@@ -9,24 +9,24 @@ defined('ABSPATH') or die('Cannot access pages directly.');
 <section>
   <?php $dko_category_widget_query->the_post(); ?>
   <article class="latest">
-    <div class="inner">
-      <a href="<?php the_permalink(); ?>" class="thumbnail"><?php the_post_thumbnail(array(235, 160)); ?></a>
-      <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+    <a href="<?php the_permalink(); ?>" class="inner">
+      <?php the_post_thumbnail(array(235, 160)); ?>
+      <h3><?php the_title(); ?></h3>
       <?php $single_tag = get_single_tag(); if ($single_tag): ?>
-        <em class="meta">filed under <a><?php echo $single_tag->name; ?></a></em>
+        <em class="meta">filed under <span class="tag"><?php echo $single_tag->name; ?></span></em>
       <?php endif; ?>
       <div class="excerpt">
         <?php the_excerpt(); ?>
-        <a href="<?php the_permalink(); ?>" class="read-more">Read more...</a>
+        <span class="read-more">Read more...</span>
       </div>
-    </div><!-- /.inner -->
+    </a><!-- /.inner -->
   </article>
   <?php while ($dko_category_widget_query->have_posts()): $dko_category_widget_query->the_post(); ?>
     <article class="another">
-      <div class="inner">
-        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-        <a href="<?php the_permalink(); ?>" class="read-more">Read more...</a>
-      </div><!-- /.inner -->
+      <a href="<?php the_permalink(); ?>" class="inner">
+        <h3><?php the_title(); ?></h3>
+        <span class="read-more">Read more...</span>
+      </a><!-- /.inner -->
     </article>
   <?php endwhile; ?>
 </section>
